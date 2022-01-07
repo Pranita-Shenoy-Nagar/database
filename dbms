@@ -1,0 +1,100 @@
+create table baby
+(
+bno varchar(20),
+bname varchar(20),
+age int,
+mothername varchar(20),
+fathername varchar(20),
+weight float,
+height float,
+gender varchar(20),
+primary key(bno)
+);
+
+
+create table hospital
+(
+hno varchar(20),
+hname varchar(20),
+location varchar(20),
+phone varchar(20),
+);
+
+create table vaccination 
+(
+vno varchar(20),
+vname varchar(20),
+preventdisease varchar(20),
+agefordose int,
+hno varchar(20),
+primary key(vno)
+foreign key(hno) references hospital(hno) on delete cascade
+);
+
+
+create table employee
+(
+eno varchar(20),
+ename varchar(20),
+age int,
+desgination varchar(20),
+gender varchar(20),
+hno varchar(20),
+primary key(eno),
+foreign key(hno) references hospital(hno) on delete cascade
+);
+
+create table receive 
+(
+bno varchar(20),
+vno varchar(20),
+date date,
+primary key(bno,vno),
+foreign key(bno) references baby(bno) on delete cascade,
+foreign key(vno) references vaccination(vno) on delete cascade
+);
+
+
+insert into baby values('&bno','&bname','&age','&mothername','&fathername','&weight','&height','&gender');
+insert into vaccination values('&vno','&vname','&preventdisease','&agefordose','&hno');
+insert into hospital values('&hno','&hname','&location','&phone');
+insert into employee values('&eno','&ename','&age','&description','&gender','&hno');
+insert into receive values('&bno','&vno','&date');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
